@@ -31,6 +31,8 @@ RUN set -xe \
 
 COPY mvtec.py mvtec.py
 RUN set -xe \
-        && wget -P /data ftp://guest:GU.205dldo@ftp.softronics.ch/mvtec_anomaly_detection/mvtec_anomaly_detection.tar.xz \
-        && tar -xf /data/mvtec_anomaly_detection.tar.xz \
-        && python mvtec.py
+        && mkdir -p /data/MVTec \
+        && wget -P /data/MVTec ftp://guest:GU.205dldo@ftp.softronics.ch/mvtec_anomaly_detection/mvtec_anomaly_detection.tar.xz \
+        && tar -xf /data/MVTec/mvtec_anomaly_detection.tar.xz -C /data/MVTec \
+        && python mvtec.py \
+        && rm -rf /data/MVTec
